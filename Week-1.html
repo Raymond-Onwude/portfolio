@@ -103,7 +103,7 @@
 
     <!-- Question 1 -->
     <div class="question">
-      <p>1. What is a Python program?</p>
+      <p>1. What is a Python program11?</p>
       <input type="radio" id="q1a" name="q1" value="a"> A sequence of instructions to perform a computation.<br>
       <input type="radio" id="q1b" name="q1" value="b"> A single line of code.<br>
       <input type="radio" id="q1c" name="q1" value="c"> A group of mathematical expressions.<br>
@@ -232,66 +232,50 @@ function gradeQuiz() {
   let lastName = document.getElementById("lastName").value;
 
   // Check for correct answers
-  if (form.q1.value === 'a') score++;
-  if (form.q2.value === 'a') score++;
-  if (form.q3.value === 'a') score++;
-  if (form.q4.value === 'c') score++;
-  if (form.q5.value === 'b') score++;
-  if (form.q6.value === 'b') score++;
-  if (form.q7.value === 'b') score++;
-  if (form.q8.value === 'b') score++;
-  if (form.q9.value === 'b') score++;
-  if (form.q10.value === 'a') score++;
-  if (form.q11.value === 'c') score++;
-  if (form.q12.value === 'b') score++;
-  if (form.q13.value === 'b') score++;
-  if (form.q14.value === 'b') score++;
-  if (form.q15.value === 'c') score++;
+    if (form.q1.value === 'a') score++;
+    if (form.q2.value === 'a') score++;
+    if (form.q3.value === 'a') score++;
+    if (form.q4.value === 'c') score++;
+    if (form.q5.value === 'b') score++;
+    if (form.q6.value === 'b') score++;
+    if (form.q7.value === 'b') score++;
+    if (form.q8.value === 'b') score++;
+    if (form.q9.value === 'b') score++;
+    if (form.q10.value === 'a') score++;
+    if (form.q11.value === 'c') score++;
+    if (form.q12.value === 'b') score++;
+    if (form.q13.value === 'b') score++;
+    if (form.q14.value === 'b') score++;
+    if (form.q15.value === 'c') score++;
 
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
 
   // Display result and grade
-  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+  document.getElementById("result").innerHTML = Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%);
   document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
   // Generate PDF
+  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+
+  // Send result to email (use an API like EmailJS or backend)
+  // sendEmail(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+}
+
+// Generate PDF with quiz results
+function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  // Title
-  doc.setFontSize(22);
-  doc.text("Python Syntax & Structure Quiz Results", 20, 30);
-
-  // Student details
-  doc.setFontSize(16);
-  doc.text(`Student Name: ${firstName} ${lastName}`, 20, 50);
-  doc.text(`Score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`, 20, 60);
-  doc.text(`Date: ${timestamp}`, 20, 70);
-
-  // Add results to the PDF
-  doc.text("Quiz Results", 20, 90);
-  doc.setFontSize(12);
-  doc.text(`Question 1: ${form.q1.value === 'a' ? 'Correct' : 'Incorrect'}`, 20, 100);
-  doc.text(`Question 2: ${form.q2.value === 'a' ? 'Correct' : 'Incorrect'}`, 20, 110);
-  doc.text(`Question 3: ${form.q3.value === 'a' ? 'Correct' : 'Incorrect'}`, 20, 120);
-  doc.text(`Question 4: ${form.q4.value === 'c' ? 'Correct' : 'Incorrect'}`, 20, 130);
-  doc.text(`Question 5: ${form.q5.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 140);
-  doc.text(`Question 6: ${form.q6.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 150);
-  doc.text(`Question 7: ${form.q7.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 160);
-  doc.text(`Question 8: ${form.q8.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 170);
-  doc.text(`Question 9: ${form.q9.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 180);
-  doc.text(`Question 10: ${form.q10.value === 'a' ? 'Correct' : 'Incorrect'}`, 20, 190);
-  doc.text(`Question 11: ${form.q11.value === 'c' ? 'Correct' : 'Incorrect'}`, 20, 200);
-  doc.text(`Question 12: ${form.q12.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 210);
-  doc.text(`Question 13: ${form.q13.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 220);
-  doc.text(`Question 14: ${form.q14.value === 'b' ? 'Correct' : 'Incorrect'}`, 20, 230);
-  doc.text(`Question 15: ${form.q15.value === 'c' ? 'Correct' : 'Incorrect'}`, 20, 240);
+  doc.text(Python Syntax & Structure Quiz Results, 20, 20);
+  doc.text(Student: ${firstName} ${lastName}, 20, 30);
+  doc.text(Score: ${score}/${totalQuestions}, 20, 40);
+  doc.text(Grade: ${grade}%, 20, 50);
+  doc.text(Submitted on: ${timestamp}, 20, 60);
 
   // Save the PDF
-  doc.save("quiz_results.pdf");
+  doc.save(${firstName}_${lastName}_Quiz_Result.pdf);
 }
-
 
 // Example: Send results via Email (using EmailJS or backend API)
 function sendEmail(firstName, lastName, score, totalQuestions, grade, timestamp) {
