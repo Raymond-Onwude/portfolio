@@ -6,7 +6,7 @@
 ---
 
 ## 🚀 About Me
-Hi, I’m Raymond, a seasoned professional who bridges the gap between **finance** and **technology**. As a **Certified Public Accountant (CPA)** and an aspiring leader in the **quantitative data science** space, I specialize in transforming financial data into actionable insights using modern data tools.  
+I’m a seasoned professional who bridges the gap between **finance** and **technology**. As a **Certified Public Accountant (CPA)** and an aspiring leader in the **quantitative data science** space, I specialize in transforming financial data into actionable insights using modern data tools.  
 
 With a deep understanding of **accounting principles** and a passion for **analytics**, I bring innovative approaches to solving complex problems in **finance**, **business strategy**, and **data science**.
 
@@ -32,8 +32,8 @@ With a deep understanding of **accounting principles** and a passion for **analy
 I’m always excited to collaborate on **quantitative analysis**, **financial data projects**, and **FinTech innovations**. Let’s discuss how we can build something impactful together!  
 
 - 📩 **Email**: raymondonwude@outlook.com  
-- 🌟 **GitHub Portfolio**: [github.com/Python-Analysis](https://github.com/Python-Analysis)  
-- 📈 **LinkedIn**: [Your LinkedIn Profile Link](#)  
+- 🌟 **GitHub Portfolio**: [github.com/Python-Analysis]([https://github.com/Python-Analysis](https://raymond-onwude.github.io/portfolio/index.html))  
+- 📈 **LinkedIn**: [Your LinkedIn Profile Link](https://www.linkedin.com/in/raymondonwude/)  
 
 ---
 
