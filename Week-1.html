@@ -93,8 +93,6 @@ function gradeQuiz() {
   // Question 4
   if (document.getElementById("q4c").checked) score++;
 
-  // Add more conditions here for other questions
-
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
 
@@ -104,9 +102,6 @@ function gradeQuiz() {
 
   // Generate PDF
   generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
-
-  // Send result to email (use an API like EmailJS or backend)
-  // sendEmail(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
 }
 
 // Generate PDF with quiz results
@@ -114,28 +109,50 @@ function generatePDF(firstName, lastName, score, totalQuestions, grade, timestam
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
+  // Title and headers
+  doc.setFontSize(18);
+  doc.text('Python Syntax & Structure Quiz Results', 20, 20);
+
+  // Student Information
+  doc.setFontSize(12);
   doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
   doc.text(`Score: ${score}/${totalQuestions}`, 20, 40);
   doc.text(`Grade: ${grade}%`, 20, 50);
   doc.text(`Submitted on: ${timestamp}`, 20, 60);
 
+  // Space before questions
+  doc.text("Questions and Answers:", 20, 70);
+  doc.line(20, 72, 180, 72);  // Line separator
+
+  // Questions and answers
+  let y = 80;  // Starting Y position for questions
+
+  if (document.getElementById("q1a").checked) {
+    doc.text("1. What is a Python program?", 20, y);
+    doc.text("Answer: A sequence of instructions to perform a computation.", 20, y + 10);
+    y += 20;
+  }
+  
+  if (document.getElementById("q2a").checked) {
+    doc.text("2. What does the 'print' function do?", 20, y);
+    doc.text("Answer: Displays output on the screen.", 20, y + 10);
+    y += 20;
+  }
+  
+  if (document.getElementById("q3a").checked) {
+    doc.text("3. What is the output of: 6 * 7?", 20, y);
+    doc.text("Answer: 42", 20, y + 10);
+    y += 20;
+  }
+
+  if (document.getElementById("q4c").checked) {
+    doc.text("4. What type is the value '42.0'?", 20, y);
+    doc.text("Answer: Float", 20, y + 10);
+    y += 20;
+  }
+
   // Save the PDF
   doc.save(`${firstName}_${lastName}_Quiz_Result.pdf`);
-}
-
-// Example: Send results via Email (using EmailJS or backend API)
-function sendEmail(firstName, lastName, score, totalQuestions, grade, timestamp) {
-  // Use EmailJS or backend API to send an email with the results
-  // Example using EmailJS (requires setup)
-  // emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-  //   firstName,
-  //   lastName,
-  //   score,
-  //   totalQuestions,
-  //   grade,
-  //   timestamp
-  // });
 }
 </script>
 
