@@ -5,12 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Python Syntax & Structure Quiz</title>
   <style>
-    body { font-family: Arial, sans-serif; }
-    h1 { text-align: center; color: #4CAF50; }
-    .quiz-container { width: 60%; margin: 0 auto; }
-    .question { margin: 20px 0; }
-    .result { font-size: 20px; font-weight: bold; }
-    .name-input { margin-bottom: 20px; }
+   body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4CAF50;
+      padding: 20px 0;
+      background-color: #f4f4f9;
+      margin-bottom: 30px;
+    }
+
+    .quiz-container {
+      width: 70%;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      margin: 20px 0;
+      font-size: 16px;
+    }
+
+    .question input {
+      margin-right: 10px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #e1ffe1;
+      border-radius: 10px;
+    }
+
+    .timestamp {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .topic {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .name-input {
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -138,8 +211,9 @@
       <input type="radio" id="q15c" name="q15" value="c"> x = 10<br>
     </div>
 
+    <!-- Submit Button -->
     <div>
-      <button type="button" onclick="calculateScore()">Submit Quiz</button>
+      <button type="button" class="button" onclick="calculateScore()">Submit Quiz</button>
     </div>
 
   </form>
@@ -183,10 +257,9 @@
     const score = document.getElementById('result').textContent;
 
     doc.text('Python Syntax & Structure Quiz Results', 20, 20);
-    doc.text(`Name: ${name}`, 20, 30);
-    doc.text(`Score: ${score}`, 20, 40);
-
-    doc.save('quiz-results.pdf');
+    doc.text('Name: ' + name, 20, 30);
+    doc.text('Score: ' + score, 20, 40);
+    doc.save('quiz_results.pdf');
   }
 </script>
 
