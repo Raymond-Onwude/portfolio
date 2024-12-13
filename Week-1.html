@@ -170,4 +170,14 @@ function generatePDF(firstName, lastName, score, totalQuestions, grade, timestam
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text(`Python Syntax &
+  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
+  doc.text(`Submitted on: ${timestamp}`, 20, 50);
+
+  doc.save(`quiz_results_${firstName}_${lastName}.pdf`);
+}
+</script>
+
+</body>
+</html>
