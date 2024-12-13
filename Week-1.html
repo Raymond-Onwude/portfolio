@@ -61,6 +61,49 @@
       <input type="radio" id="q4c" name="q4" value="c"> Float<br>
     </div>
 
+    <!-- Additional Questions -->
+    <div class="question">
+      <p>5. What symbol is used for exponentiation in Python?</p>
+      <input type="radio" id="q5a" name="q5" value="a"> ^<br>
+      <input type="radio" id="q5b" name="q5" value="b"> **<br>
+      <input type="radio" id="q5c" name="q5" value="c"> // <br>
+    </div>
+
+    <div class="question">
+      <p>6. What is the result of the expression 84 / 2?</p>
+      <input type="radio" id="q6a" name="q6" value="a"> 42<br>
+      <input type="radio" id="q6b" name="q6" value="b"> 42.0<br>
+      <input type="radio" id="q6c" name="q6" value="c"> 42.5<br>
+    </div>
+
+    <div class="question">
+      <p>7. How do you indicate the start and end of a string in Python?</p>
+      <input type="radio" id="q7a" name="q7" value="a"> With curly braces<br>
+      <input type="radio" id="q7b" name="q7" value="b"> With double or single quotes<br>
+      <input type="radio" id="q7c" name="q7" value="c"> With square brackets<br>
+    </div>
+
+    <div class="question">
+      <p>8. What does the 'input()' function do in Python?</p>
+      <input type="radio" id="q8a" name="q8" value="a"> Displays a message<br>
+      <input type="radio" id="q8b" name="q8" value="b"> Gets data from the user<br>
+      <input type="radio" id="q8c" name="q8" value="c"> Exits the program<br>
+    </div>
+
+    <div class="question">
+      <p>9. What is the output of the code: <br> x = 5 <br> y = 3 <br> print(x + y)?</p>
+      <input type="radio" id="q9a" name="q9" value="a"> 5<br>
+      <input type="radio" id="q9b" name="q9" value="b"> 8<br>
+      <input type="radio" id="q9c" name="q9" value="c"> 53<br>
+    </div>
+
+    <div class="question">
+      <p>10. What is the purpose of a 'while' loop in Python?</p>
+      <input type="radio" id="q10a" name="q10" value="a"> Repeats a block of code as long as a condition is true<br>
+      <input type="radio" id="q10b" name="q10" value="b"> Runs the code once<br>
+      <input type="radio" id="q10c" name="q10" value="c"> Stops the code execution<br>
+    </div>
+
     <!-- Submit Button -->
     <div class="question">
       <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
@@ -75,7 +118,7 @@
 // Grading function
 function gradeQuiz() {
   let score = 0;
-  let totalQuestions = 4; // Change this as you add more questions
+  let totalQuestions = 10; // Updated to 10 questions
 
   // Get student name
   let firstName = document.getElementById("firstName").value;
@@ -93,7 +136,23 @@ function gradeQuiz() {
   // Question 4
   if (document.getElementById("q4c").checked) score++;
 
-  // Add more conditions here for other questions
+  // Question 5
+  if (document.getElementById("q5b").checked) score++;
+
+  // Question 6
+  if (document.getElementById("q6b").checked) score++;
+
+  // Question 7
+  if (document.getElementById("q7b").checked) score++;
+
+  // Question 8
+  if (document.getElementById("q8b").checked) score++;
+
+  // Question 9
+  if (document.getElementById("q9b").checked) score++;
+
+  // Question 10
+  if (document.getElementById("q10a").checked) score++;
 
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
@@ -104,9 +163,6 @@ function gradeQuiz() {
 
   // Generate PDF
   generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
-
-  // Send result to email (use an API like EmailJS or backend)
-  // sendEmail(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
 }
 
 // Generate PDF with quiz results
@@ -114,30 +170,4 @@ function generatePDF(firstName, lastName, score, totalQuestions, grade, timestam
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
-  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
-  doc.text(`Score: ${score}/${totalQuestions}`, 20, 40);
-  doc.text(`Grade: ${grade}%`, 20, 50);
-  doc.text(`Submitted on: ${timestamp}`, 20, 60);
-
-  // Save the PDF
-  doc.save(`${firstName}_${lastName}_Quiz_Result.pdf`);
-}
-
-// Example: Send results via Email (using EmailJS or backend API)
-function sendEmail(firstName, lastName, score, totalQuestions, grade, timestamp) {
-  // Use EmailJS or backend API to send an email with the results
-  // Example using EmailJS (requires setup)
-  // emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-  //   firstName,
-  //   lastName,
-  //   score,
-  //   totalQuestions,
-  //   grade,
-  //   timestamp
-  // });
-}
-</script>
-
-</body>
-</html>
+  doc.text(`Python Syntax &
