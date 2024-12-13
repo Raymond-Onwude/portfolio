@@ -251,16 +251,21 @@
     document.getElementById('downloadPDF').style.display = 'inline-block';
   }
 
-  function downloadPDF() {
-    const doc = new jsPDF();
-    const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
-    const score = document.getElementById('result').textContent;
+     function downloadPDF() {
+        const doc = new jsPDF();
+        const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+        const score = document.getElementById('result').textContent;
 
-    doc.text('Python Syntax & Structure Quiz Results', 20, 20);
-    doc.text('Name: ' + name, 20, 30);
-    doc.text('Score: ' + score, 20, 40);
-    doc.save('quiz_results.pdf');
-  }
+        // Add the quiz results to the PDF
+        doc.text('Python Syntax & Structure Quiz Results', 20, 20);
+        doc.text(`Name: ${name}`, 20, 30);
+        doc.text(`Score: ${score}`, 20, 40);
+
+        // Save the generated PDF
+        doc.save(`${name}_Python_Quiz_Results.pdf`);
+    }
+</script>
+
 </script>
 
 </body>
