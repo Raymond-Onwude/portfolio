@@ -103,7 +103,7 @@
 
     <!-- Question 1 -->
     <div class="question">
-      <p>1. What is a Python program?</p>
+      <p>1. What is a Python program11?</p>
       <input type="radio" id="q1a" name="q1" value="a"> A sequence of instructions to perform a computation.<br>
       <input type="radio" id="q1b" name="q1" value="b"> A single line of code.<br>
       <input type="radio" id="q1c" name="q1" value="c"> A group of mathematical expressions.<br>
@@ -231,19 +231,22 @@ function gradeQuiz() {
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
 
-  // Question 1
-  if (document.getElementById("q1a").checked) score++;
-  
-  // Question 2
-  if (document.getElementById("q2a").checked) score++;
-  
-  // Question 3
-  if (document.getElementById("q3a").checked) score++;
-
-  // Question 4
-  if (document.getElementById("q4c").checked) score++;
-
-  // Add more conditions here for other questions
+  // Check for correct answers
+    if (form.q1.value === 'a') score++;
+    if (form.q2.value === 'a') score++;
+    if (form.q3.value === 'a') score++;
+    if (form.q4.value === 'c') score++;
+    if (form.q5.value === 'b') score++;
+    if (form.q6.value === 'b') score++;
+    if (form.q7.value === 'b') score++;
+    if (form.q8.value === 'b') score++;
+    if (form.q9.value === 'b') score++;
+    if (form.q10.value === 'a') score++;
+    if (form.q11.value === 'c') score++;
+    if (form.q12.value === 'b') score++;
+    if (form.q13.value === 'b') score++;
+    if (form.q14.value === 'b') score++;
+    if (form.q15.value === 'c') score++;
 
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
