@@ -212,60 +212,81 @@
     </div>
 
     <!-- Submit Button -->
-    <div>
-      <button type="button" class="button" onclick="calculateScore()">Submit Quiz</button>
+    <div class="question">
+      <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
     </div>
-
   </form>
 
-  <div class="result" id="result"></div>
-  <button id="downloadPDF" style="display: none;" onclick="downloadPDF()">Download Results</button>
+  <div id="result" class="result"></div>
+  <div id="timestamp" class="result"></div>
 </div>
 
 <script>
-  function calculateScore() {
-    const form = document.getElementById('quizForm');
-    const result = document.getElementById('result');
-    let score = 0;
+// Grading function
+function gradeQuiz() {
+  let score = 0;
+  let totalQuestions = 4; // Change this as you add more questions
 
-    // Check for correct answers
-    if (form.q1.value === 'a') score++;
-    if (form.q2.value === 'a') score++;
-    if (form.q3.value === 'a') score++;
-    if (form.q4.value === 'c') score++;
-    if (form.q5.value === 'b') score++;
-    if (form.q6.value === 'b') score++;
-    if (form.q7.value === 'b') score++;
-    if (form.q8.value === 'b') score++;
-    if (form.q9.value === 'b') score++;
-    if (form.q10.value === 'a') score++;
-    if (form.q11.value === 'c') score++;
-    if (form.q12.value === 'b') score++;
-    if (form.q13.value === 'b') score++;
-    if (form.q14.value === 'b') score++;
-    if (form.q15.value === 'c') score++;
+  // Get student name
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
 
-    result.textContent = `Your score is ${score} out of 15`;
+  // Question 1
+  if (document.getElementById("q1a").checked) score++;
+  
+  // Question 2
+  if (document.getElementById("q2a").checked) score++;
+  
+  // Question 3
+  if (document.getElementById("q3a").checked) score++;
 
-    // Show download button
-    document.getElementById('downloadPDF').style.display = 'inline-block';
-  }
+  // Question 4
+  if (document.getElementById("q4c").checked) score++;
 
-     function downloadPDF() {
-        const doc = new jsPDF();
-        const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
-        const score = document.getElementById('result').textContent;
+  // Add more conditions here for other questions
 
-        // Add the quiz results to the PDF
-        doc.text('Python Syntax & Structure Quiz Results', 20, 20);
-        doc.text(`Name: ${name}`, 20, 30);
-        doc.text(`Score: ${score}`, 20, 40);
+  let grade = (score / totalQuestions) * 100;
+  let timestamp = new Date().toLocaleString();
 
-        // Save the generated PDF
-        doc.save(`${name}_Python_Quiz_Results.pdf`);
-    }
-</script>
+  // Display result and grade
+  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+  document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
+  // Generate PDF
+  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+
+  // Send result to email (use an API like EmailJS or backend)
+  // sendEmail(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+}
+
+// Generate PDF with quiz results
+function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions}`, 20, 40);
+  doc.text(`Grade: ${grade}%`, 20, 50);
+  doc.text(`Submitted on: ${timestamp}`, 20, 60);
+
+  // Save the PDF
+  doc.save(`${firstName}_${lastName}_Quiz_Result.pdf`);
+}
+
+// Example: Send results via Email (using EmailJS or backend API)
+function sendEmail(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  // Use EmailJS or backend API to send an email with the results
+  // Example using EmailJS (requires setup)
+  // emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  //   firstName,
+  //   lastName,
+  //   score,
+  //   totalQuestions,
+  //   grade,
+  //   timestamp
+  // });
+}
 </script>
 
 </body>
