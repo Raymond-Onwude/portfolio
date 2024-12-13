@@ -5,86 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Python Syntax & Structure Quiz</title>
   <style>
-   body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      text-align: center;
-      color: #4CAF50;
-      padding: 20px 0;
-      background-color: #f4f4f9;
-      margin-bottom: 30px;
-    }
-
-    .quiz-container {
-      width: 70%;
-      margin: 0 auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .question {
-      margin: 20px 0;
-      font-size: 16px;
-    }
-
-    .question input {
-      margin-right: 10px;
-    }
-
-    .result {
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 30px;
-      padding: 10px;
-      background-color: #e1ffe1;
-      border-radius: 10px;
-    }
-
-    .timestamp {
-      font-size: 14px;
-      text-align: center;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    .topic {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .name-input {
-      margin-bottom: 20px;
-    }
-
-    .button {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .button:hover {
-      background-color: #45a049;
-    }
+    body { font-family: Arial, sans-serif; }
+    h1 { text-align: center; color: #4CAF50; }
+    .quiz-container { width: 60%; margin: 0 auto; }
+    .question { margin: 20px 0; }
+    .result { font-size: 20px; font-weight: bold; }
+    .name-input { margin-bottom: 20px; }
   </style>
+  <!-- Include jsPDF library for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -103,7 +31,7 @@
 
     <!-- Question 1 -->
     <div class="question">
-      <p>1. What is a Python program11?</p>
+      <p>1. What is a Python program?</p>
       <input type="radio" id="q1a" name="q1" value="a"> A sequence of instructions to perform a computation.<br>
       <input type="radio" id="q1b" name="q1" value="b"> A single line of code.<br>
       <input type="radio" id="q1c" name="q1" value="c"> A group of mathematical expressions.<br>
@@ -133,84 +61,6 @@
       <input type="radio" id="q4c" name="q4" value="c"> Float<br>
     </div>
 
-    <!-- Additional Questions -->
-    <div class="question">
-      <p>5. What symbol is used for exponentiation in Python?</p>
-      <input type="radio" id="q5a" name="q5" value="a"> ^<br>
-      <input type="radio" id="q5b" name="q5" value="b"> **<br>
-      <input type="radio" id="q5c" name="q5" value="c"> // <br>
-    </div>
-
-    <div class="question">
-      <p>6. What is the result of the expression 84 / 2?</p>
-      <input type="radio" id="q6a" name="q6" value="a"> 42<br>
-      <input type="radio" id="q6b" name="q6" value="b"> 42.0<br>
-      <input type="radio" id="q6c" name="q6" value="c"> 42.5<br>
-    </div>
-
-    <div class="question">
-      <p>7. How do you indicate the start and end of a string in Python?</p>
-      <input type="radio" id="q7a" name="q7" value="a"> With curly braces<br>
-      <input type="radio" id="q7b" name="q7" value="b"> With double or single quotes<br>
-      <input type="radio" id="q7c" name="q7" value="c"> With square brackets<br>
-    </div>
-
-    <div class="question">
-      <p>8. What does the 'input()' function do in Python?</p>
-      <input type="radio" id="q8a" name="q8" value="a"> Displays a message<br>
-      <input type="radio" id="q8b" name="q8" value="b"> Gets data from the user<br>
-      <input type="radio" id="q8c" name="q8" value="c"> Exits the program<br>
-    </div>
-
-    <div class="question">
-      <p>9. What is the output of the code: <br> x = 5 <br> y = 3 <br> print(x + y)?</p>
-      <input type="radio" id="q9a" name="q9" value="a"> 5<br>
-      <input type="radio" id="q9b" name="q9" value="b"> 8<br>
-      <input type="radio" id="q9c" name="q9" value="c"> 53<br>
-    </div>
-
-    <div class="question">
-      <p>10. What is the purpose of a 'while' loop in Python?</p>
-      <input type="radio" id="q10a" name="q10" value="a"> Repeats a block of code as long as a condition is true<br>
-      <input type="radio" id="q10b" name="q10" value="b"> Runs the code once<br>
-      <input type="radio" id="q10c" name="q10" value="c"> Stops the code execution<br>
-    </div>
-
-    <div class="question">
-      <p>11. How do you create a comment in Python?</p>
-      <input type="radio" id="q11a" name="q11" value="a"> // This is a comment<br>
-      <input type="radio" id="q11b" name="q11" value="b"> <!-- This is a comment --> <br>
-      <input type="radio" id="q11c" name="q11" value="c"> # This is a comment<br>
-    </div>
-
-    <div class="question">
-      <p>12. What is the function of the 'else' statement in a conditional block?</p>
-      <input type="radio" id="q12a" name="q12" value="a"> Executes if the condition is true<br>
-      <input type="radio" id="q12b" name="q12" value="b"> Executes if the condition is false<br>
-      <input type="radio" id="q12c" name="q12" value="c"> Never executes<br>
-    </div>
-
-    <div class="question">
-      <p>13. What does the 'break' statement do in a loop?</p>
-      <input type="radio" id="q13a" name="q13" value="a"> Continues the loop<br>
-      <input type="radio" id="q13b" name="q13" value="b"> Stops the loop<br>
-      <input type="radio" id="q13c" name="q13" value="c"> Skips to the next iteration<br>
-    </div>
-
-    <div class="question">
-      <p>14. What data type does the 'input()' function return?</p>
-      <input type="radio" id="q14a" name="q14" value="a"> Integer<br>
-      <input type="radio" id="q14b" name="q14" value="b"> String<br>
-      <input type="radio" id="q14c" name="q14" value="c"> List<br>
-    </div>
-
-    <div class="question">
-      <p>15. What is the correct way to declare a variable in Python?</p>
-      <input type="radio" id="q15a" name="q15" value="a"> var x = 10<br>
-      <input type="radio" id="q15b" name="q15" value="b"> x := 10<br>
-      <input type="radio" id="q15c" name="q15" value="c"> x = 10<br>
-    </div>
-
     <!-- Submit Button -->
     <div class="question">
       <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
@@ -225,34 +75,31 @@
 // Grading function
 function gradeQuiz() {
   let score = 0;
-  let totalQuestions = 15; // Change this as you add more questions
+  let totalQuestions = 4; // Change this as you add more questions
 
   // Get student name
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
 
-  // Check for correct answers
-    if (form.q1.value === 'a') score++;
-    if (form.q2.value === 'a') score++;
-    if (form.q3.value === 'a') score++;
-    if (form.q4.value === 'c') score++;
-    if (form.q5.value === 'b') score++;
-    if (form.q6.value === 'b') score++;
-    if (form.q7.value === 'b') score++;
-    if (form.q8.value === 'b') score++;
-    if (form.q9.value === 'b') score++;
-    if (form.q10.value === 'a') score++;
-    if (form.q11.value === 'c') score++;
-    if (form.q12.value === 'b') score++;
-    if (form.q13.value === 'b') score++;
-    if (form.q14.value === 'b') score++;
-    if (form.q15.value === 'c') score++;
+  // Question 1
+  if (document.getElementById("q1a").checked) score++;
+  
+  // Question 2
+  if (document.getElementById("q2a").checked) score++;
+  
+  // Question 3
+  if (document.getElementById("q3a").checked) score++;
+
+  // Question 4
+  if (document.getElementById("q4c").checked) score++;
+
+  // Add more conditions here for other questions
 
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
 
   // Display result and grade
-  document.getElementById("result").innerHTML = Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%);
+  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
   document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
   // Generate PDF
@@ -267,14 +114,14 @@ function generatePDF(firstName, lastName, score, totalQuestions, grade, timestam
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text(Python Syntax & Structure Quiz Results, 20, 20);
-  doc.text(Student: ${firstName} ${lastName}, 20, 30);
-  doc.text(Score: ${score}/${totalQuestions}, 20, 40);
-  doc.text(Grade: ${grade}%, 20, 50);
-  doc.text(Submitted on: ${timestamp}, 20, 60);
+  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions}`, 20, 40);
+  doc.text(`Grade: ${grade}%`, 20, 50);
+  doc.text(`Submitted on: ${timestamp}`, 20, 60);
 
   // Save the PDF
-  doc.save(${firstName}_${lastName}_Quiz_Result.pdf);
+  doc.save(`${firstName}_${lastName}_Quiz_Result.pdf`);
 }
 
 // Example: Send results via Email (using EmailJS or backend API)
