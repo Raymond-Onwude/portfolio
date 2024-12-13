@@ -32,8 +32,8 @@ With a deep understanding of **accounting principles** and a passion for **analy
 I’m always excited to collaborate on **quantitative analysis**, **financial data projects**, and **FinTech innovations**. Let’s discuss how we can build something impactful together!  
 
 - 📩 **Email**: raymondonwude@outlook.com  
-- 🌟 **GitHub Portfolio**: [github.com/Python-Analysis]([https://github.com/Python-Analysis](https://raymond-onwude.github.io/portfolio/index.html))  
-- 📈 **LinkedIn**: [Your LinkedIn Profile Link](https://www.linkedin.com/in/raymondonwude/)  
+- 🌟 **GitHub Portfolio**: [GitHub Portfolio Website](https://github.com/Python-Analysis](https://raymond-onwude.github.io/portfolio/index.html)  
+- 📈 **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/raymondonwude/)  
 
 ---
 
