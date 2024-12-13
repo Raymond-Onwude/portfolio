@@ -10,7 +10,10 @@
     .quiz-container { width: 60%; margin: 0 auto; }
     .question { margin: 20px 0; }
     .result { font-size: 20px; font-weight: bold; }
+    .name-input { margin-bottom: 20px; }
   </style>
+  <!-- Include jsPDF library for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -18,6 +21,14 @@
 
 <div class="quiz-container">
   <form id="quizForm">
+    <!-- Name Input -->
+    <div class="name-input">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required><br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required><br>
+    </div>
+
     <!-- Question 1 -->
     <div class="question">
       <p>1. What is a Python program?</p>
@@ -50,8 +61,6 @@
       <input type="radio" id="q4c" name="q4" value="c"> Float<br>
     </div>
 
-    <!-- Add more questions here -->
-
     <!-- Submit Button -->
     <div class="question">
       <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
@@ -67,6 +76,10 @@
 function gradeQuiz() {
   let score = 0;
   let totalQuestions = 4; // Change this as you add more questions
+
+  // Get student name
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
 
   // Question 1
   if (document.getElementById("q1a").checked) score++;
@@ -86,18 +99,43 @@ function gradeQuiz() {
   let timestamp = new Date().toLocaleString();
 
   // Display result and grade
-  document.getElementById("result").innerHTML = "Your score: " + score + "/" + totalQuestions + " (" + grade.toFixed(2) + "%)";
+  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
   document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
-  // Save results (example: store in GitHub repo)
-  let resultData = {
-    score: score,
-    totalQuestions: totalQuestions,
-    grade: grade.toFixed(2),
-    timestamp: timestamp
-  };
-  // Store or submit to server here (example: commit to GitHub)
-  console.log(resultData); // For testing purposes
+  // Generate PDF
+  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+
+  // Send result to email (use an API like EmailJS or backend)
+  // sendEmail(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+}
+
+// Generate PDF with quiz results
+function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text(`Python Syntax & Structure Quiz Results`, 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions}`, 20, 40);
+  doc.text(`Grade: ${grade}%`, 20, 50);
+  doc.text(`Submitted on: ${timestamp}`, 20, 60);
+
+  // Save the PDF
+  doc.save(`${firstName}_${lastName}_Quiz_Result.pdf`);
+}
+
+// Example: Send results via Email (using EmailJS or backend API)
+function sendEmail(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  // Use EmailJS or backend API to send an email with the results
+  // Example using EmailJS (requires setup)
+  // emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  //   firstName,
+  //   lastName,
+  //   score,
+  //   totalQuestions,
+  //   grade,
+  //   timestamp
+  // });
 }
 </script>
 
