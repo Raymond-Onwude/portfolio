@@ -27,13 +27,6 @@
   <!-- Main CSS File -->
   <link href="assets/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Mentor
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="about-page">
@@ -42,8 +35,6 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/assets/img/logo.png" alt=""> -->
         <h1 class="sitename">Mentor</h1>
       </a>
 
@@ -55,23 +46,6 @@
           <li><a href="trainers.html">Trainers</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="pricing.html">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -108,81 +82,60 @@
     </div><!-- End Page Title -->
 
 
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-12 col-md-8 offset-md-2">
-        <form id="quizForm">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+          <form id="quizForm">
 
-          <!-- Name Input -->
-          <div class="mb-4">
-            <label for="firstName" class="form-label">First Name:</label>
-            <input type="text" class="form-control" id="firstName" required><br>
-            <label for="lastName" class="form-label">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" required><br>
+            <!-- Student Name Section -->
+            <div class="mb-4 form-student-name">
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required><br>
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required><br>
+            </div>
+
+            <!-- Questions -->
+            <div id="questions-section">
+              <!-- Repeat similar structure for 20 questions -->
+              <div class="question mb-3">
+                <p>1. What is a Python program?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="q1a" name="q1" value="a">
+                  <label class="form-check-label" for="q1a"> A sequence of instructions to perform a computation.</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="q1b" name="q1" value="b">
+                  <label class="form-check-label" for="q1b"> A single line of code.</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="q1c" name="q1" value="c">
+                  <label class="form-check-label" for="q1c"> A group of mathematical expressions.</label>
+                </div>
+              </div>
+              <!-- Add more questions from 2 to 20 following the same structure -->
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="question">
+              <button type="button" class="btn btn-primary w-100" onclick="gradeQuiz()">Submit Quiz</button>
+            </div>
+          </form>
+
+          <div id="result" class="result mt-4"></div>
+          <div id="timestamp" class="result"></div>
+
+          <!-- PDF Download Button -->
+          <div id="pdfButton" class="mt-3">
+            <button class="btn btn-success w-100" onclick="downloadPDF()">Download PDF</button>
           </div>
 
-          <!-- Question 1 -->
-          <div class="question mb-3">
-            <p>1. What is a Python program?</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q1a" name="q1" value="a">
-              <label class="form-check-label" for="q1a"> A sequence of instructions to perform a computation.</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q1b" name="q1" value="b">
-              <label class="form-check-label" for="q1b"> A single line of code.</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q1c" name="q1" value="c">
-              <label class="form-check-label" for="q1c"> A group of mathematical expressions.</label>
-            </div>
-          </div>
-
-          <!-- Question 2 -->
-          <div class="question mb-3">
-            <p>2. What does the 'print' function do?</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q2a" name="q2" value="a">
-              <label class="form-check-label" for="q2a"> Displays output on the screen.</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q2b" name="q2" value="b">
-              <label class="form-check-label" for="q2b"> Saves data to a file.</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q2c" name="q2" value="c">
-              <label class="form-check-label" for="q2c"> Performs mathematical operations.</label>
-            </div>
-          </div>
-
-          <!-- Question 3 -->
-          <div class="question mb-3">
-            <p>3. What is the output of: 6 * 7?</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q3a" name="q3" value="a">
-              <label class="form-check-label" for="q3a"> 42</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q3b" name="q3" value="b">
-              <label class="form-check-label" for="q3b"> 56</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="q3c" name="q3" value="c">
-              <label class="form-check-label" for="q3c"> 12</label>
-            </div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="question">
-            <button type="button" class="btn btn-primary w-100" onclick="gradeQuiz()">Submit Quiz</button>
-          </div>
-        </form>
-
-        <div id="result" class="result mt-4"></div>
-        <div id="timestamp" class="result"></div>
+        </div>
       </div>
     </div>
-  </div>
+
+  </main>
 
   <!-- JavaScript Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -193,11 +146,12 @@
       const correctAnswers = {
         q1: "a",
         q2: "a",
-        q3: "a"
+        q3: "a",
+        // Add correct answers for other questions here
       };
 
       let score = 0;
-      let totalQuestions = 3;
+      let totalQuestions = 20;
 
       for (let i = 1; i <= totalQuestions; i++) {
         const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
@@ -206,16 +160,25 @@
         }
       }
 
-      let resultMessage = `You scored ${score} out of ${totalQuestions}.`;
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const timestamp = new Date().toLocaleString();
+      const resultMessage = `You scored ${score} out of ${totalQuestions}.<br>Name: ${firstName} ${lastName}<br>Timestamp: ${timestamp}`;
 
-      // Display result
-      document.getElementById('result').innerHTML = resultMessage;
+      // Display result in a visually pleasing way
+      document.getElementById('result').innerHTML = `<div class="alert alert-info">${resultMessage}</div>`;
+    }
 
-      // Generate PDF
+    function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
-      doc.text(resultMessage, 10, 10);
-      doc.save('quiz-result.pdf');
+
+      doc.html(document.body, {
+        callback: function (doc) {
+          doc.save('quiz-result.pdf');
+        },
+        margin: [10, 10, 10, 10]
+      });
     }
   </script>
 
