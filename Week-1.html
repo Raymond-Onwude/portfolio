@@ -338,6 +338,64 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- Timer and Submit Button -->
+<section id="quiz-timer">
+  <div class="container">
+    <h4>Time Remaining: <span id="timer">10:00</span></h4>
+    <button id="submitQuizBtn" class="btn btn-primary" style="display:none;" onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+</section>
+
+<script>
+ function gradeQuiz() {
+    const correctAnswers = {
+      q1: "a",
+      q2: "a",
+      q3: "a",
+      // Add more questions and correct answers as necessary
+    };
+
+    let score = 0;
+    const totalQuestions = Object.keys(correctAnswers).length;
+    
+    // Validate if all required fields are filled
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    if (!firstName || !lastName) {
+      alert("Please enter your full name before submitting the quiz.");
+      return;
+    }
+
+    // Grade the quiz
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selectedAnswer && selectedAnswer.value === correctAnswers[`q${i}`]) {
+        score++;
+      }
+    }
+
+    document.getElementById('result').innerHTML = `
+      <h4>Quiz Result for ${firstName} ${lastName}</h4>
+      <p>Your Score: ${score} / ${totalQuestions}</p>
+    `;
+
+    const timestamp = new Date().toLocaleString();
+    document.getElementById('timestamp').innerHTML = `Time: ${timestamp}`;
+
+    document.getElementById('pdfButton').style.display = 'block';
+  }
+
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const resultText = document.getElementById('result').innerText;
+    const timestampText = document.getElementById('timestamp').innerText;
+
+    doc.text(`Quiz Result\n\n${resultText}\n${timestampText}`, 10, 10);
+    doc.save('quiz-result.pdf');
+  }
+
   <!-- Vendor JS Files -->
   <script src="assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/assets/vendor/php-email-form/validate.js"></script>
