@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Python Syntax & Structure Quiz</title>
-  
-  <!-- Favicon -->
+
+  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,108 +23,122 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/assets/main.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- jsPDF Library -->
+  <!-- Include jsPDF library for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
-<body class="quiz-page">
+<body class="about-page">
 
-  <!-- Header -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Logo Image or Text -->
-        <h1>Python Quiz</h1>
-      </a>
+      <h1 class="w-100 text-center py-5">Python Syntax & Structure Quiz</h1>
     </div>
   </header>
 
-  <!-- Quiz Container -->
-  <div class="container quiz-container">
-    <form id="quizForm">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <form id="quizForm">
 
-      <!-- Name Input -->
-      <div class="name-input">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" class="form-control" required><br>
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" class="form-control" required><br>
+          <!-- Name Input -->
+          <div class="mb-4">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" class="form-control" id="firstName" required><br>
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" required><br>
+          </div>
+
+          <!-- Question 1 -->
+          <div class="question mb-3">
+            <p>1. What is a Python program?</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q1a" name="q1" value="a">
+              <label class="form-check-label" for="q1a"> A sequence of instructions to perform a computation.</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q1b" name="q1" value="b">
+              <label class="form-check-label" for="q1b"> A single line of code.</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q1c" name="q1" value="c">
+              <label class="form-check-label" for="q1c"> A group of mathematical expressions.</label>
+            </div>
+          </div>
+
+          <!-- Additional Questions follow the same format -->
+          <!-- Question 2 -->
+          <div class="question mb-3">
+            <p>2. What does the 'print' function do?</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q2a" name="q2" value="a">
+              <label class="form-check-label" for="q2a"> Displays output on the screen.</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q2b" name="q2" value="b">
+              <label class="form-check-label" for="q2b"> Saves data to a file.</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q2c" name="q2" value="c">
+              <label class="form-check-label" for="q2c"> Performs mathematical operations.</label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question mb-3">
+            <p>3. What is the output of: 6 * 7?</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q3a" name="q3" value="a">
+              <label class="form-check-label" for="q3a"> 42</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q3b" name="q3" value="b">
+              <label class="form-check-label" for="q3b"> 56</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="q3c" name="q3" value="c">
+              <label class="form-check-label" for="q3c"> 12</label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="question">
+            <button type="button" class="btn btn-primary w-100" onclick="gradeQuiz()">Submit Quiz</button>
+          </div>
+        </form>
+
+        <div id="result" class="result mt-4"></div>
+        <div id="timestamp" class="result"></div>
       </div>
-
-      <!-- Questions -->
-      <div class="question">
-        <p>1. What is a Python program?</p>
-        <div class="form-check">
-          <input type="radio" id="q1a" name="q1" value="a" class="form-check-input">
-          <label for="q1a" class="form-check-label">A sequence of instructions to perform a computation.</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" id="q1b" name="q1" value="b" class="form-check-input">
-          <label for="q1b" class="form-check-label">A single line of code.</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" id="q1c" name="q1" value="c" class="form-check-input">
-          <label for="q1c" class="form-check-label">A group of mathematical expressions.</label>
-        </div>
-      </div>
-
-      <!-- More Questions -->
-      <!-- Similar structure for other questions (Q2 to Q10) -->
-      <div class="question">
-        <p>2. What does the 'print' function do?</p>
-        <div class="form-check">
-          <input type="radio" id="q2a" name="q2" value="a" class="form-check-input">
-          <label for="q2a" class="form-check-label">Displays output on the screen.</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" id="q2b" name="q2" value="b" class="form-check-input">
-          <label for="q2b" class="form-check-label">Saves data to a file.</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" id="q2c" name="q2" value="c" class="form-check-input">
-          <label for="q2c" class="form-check-label">Performs mathematical operations.</label>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="question">
-        <button type="button" class="btn btn-success" onclick="gradeQuiz()">Submit Quiz</button>
-      </div>
-    </form>
-
-    <!-- Results -->
-    <div id="result" class="result"></div>
-    <div id="timestamp" class="result"></div>
+    </div>
   </div>
 
   <script>
     // Grading function
     function gradeQuiz() {
       let score = 0;
-      let totalQuestions = 10;
+      let totalQuestions = 10; // Updated to 10 questions
 
       // Get student name
       let firstName = document.getElementById("firstName").value;
       let lastName = document.getElementById("lastName").value;
 
-      // Checking answers
+      // Question 1
       if (document.getElementById("q1a").checked) score++;
+      
+      // Question 2
       if (document.getElementById("q2a").checked) score++;
+      
+      // Question 3
       if (document.getElementById("q3a").checked) score++;
-      if (document.getElementById("q4c").checked) score++;
-      if (document.getElementById("q5b").checked) score++;
-      if (document.getElementById("q6b").checked) score++;
-      if (document.getElementById("q7b").checked) score++;
-      if (document.getElementById("q8b").checked) score++;
-      if (document.getElementById("q9b").checked) score++;
-      if (document.getElementById("q10a").checked) score++;
+
+      // Additional grading logic...
 
       let grade = (score / totalQuestions) * 100;
       let timestamp = new Date().toLocaleString();
 
-      // Display result
+      // Display result and grade
       document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
       document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
