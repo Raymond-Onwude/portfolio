@@ -93,9 +93,6 @@
     <section id="quiz" class="quiz">
       <div class="container" data-aos="fade-up">
         <div class="row">
-          <div class="col-lg-8">
-            <img src="assets/img/course-details.jpg" class="img-fluid" alt="">
-          </div>
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
             <h3>Python Programming Quiz - Week 1</h3>
             <p class="fst-italic">
@@ -107,6 +104,15 @@
               <li><i class="bi bi-check-circle"></i> Make sure to print the result screen after results have been compiled and send the PDF to your instructor.</li>
             </ul>
           </div>
+          <!-- Student Name Input Section -->
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="300">
+            <div class="form-student-name">
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required><br>
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required><br>
+            </div>
+          </div>
         </div>
       </div>
     </section><!-- /Quiz Section -->
@@ -115,14 +121,6 @@
     <section class="quiz-form">
       <div class="container">
         <form id="quizForm">
-          <!-- Student Name Section -->
-          <div class="mb-4 form-student-name">
-            <label for="firstName" class="form-label">First Name:</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required><br>
-            <label for="lastName" class="form-label">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required><br>
-          </div>
-
           <!-- Questions Section -->
           <div id="questions-section">
             <div class="question mb-3">
