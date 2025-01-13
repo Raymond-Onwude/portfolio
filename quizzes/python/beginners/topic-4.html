@@ -153,4 +153,15 @@ function gradeQuiz() {
   }
 
   const totalQuestions = Object.keys(answers).length;
-  const grade = (score / totalQuestions) * 100
+  const grade = (score / totalQuestions) * 100;
+
+  // Display the result
+  const resultDiv = document.getElementById('result');
+  resultDiv.textContent = `Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+
+  // Display timestamp
+  const timestampDiv = document.getElementById('timestamp');
+  const currentDate = new Date();
+  timestampDiv.textContent = `Quiz submitted on: ${currentDate.toLocaleString()}`;
+}
+</script>
