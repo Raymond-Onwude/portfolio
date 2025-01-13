@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Flow Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    h1 { text-align: center; color: #4CAF50; }
+    .quiz-container { width: 60%; margin: 0 auto; }
+    .question { margin: 20px 0; }
+    .result { font-size: 20px; font-weight: bold; }
+    .name-input { margin-bottom: 20px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<h1>Control Flow Quiz</h1>
+
+<div class="quiz-container">
+  <form id="quizForm">
+    <!-- Name Input -->
+    <div class="name-input">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required><br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required><br>
+    </div>
+
+    <!-- Questions -->
+    <!-- Question 1 -->
+    <div class="question">
+      <p>1. What does an <code>if</code> statement do?</p>
+      <input type="radio" name="q1" value="a"> Repeats actions<br>
+      <input type="radio" name="q1" value="b"> Executes code if a condition is true<br>
+      <input type="radio" name="q1" value="c"> Stops execution<br>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <p>2. Which statement is used to handle multiple conditions?</p>
+      <input type="radio" name="q2" value="a"> if-else<br>
+      <input type="radio" name="q2" value="b"> elif<br>
+      <input type="radio" name="q2" value="c"> while<br>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <p>3. What will the output be for <code>x = 3; if x > 5: print("Hi") else: print("Bye")</code>?</p>
+      <input type="radio" name="q3" value="a"> Hi<br>
+      <input type="radio" name="q3" value="b"> Bye<br>
+      <input type="radio" name="q3" value="c"> Error<br>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <p>4. Which loop iterates over a sequence?</p>
+      <input type="radio" name="q4" value="a"> for<br>
+      <input type="radio" name="q4" value="b"> while<br>
+      <input type="radio" name="q4" value="c"> if<br>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <p>5. What does the <code>break</code> statement do in a loop?</p>
+      <input type="radio" name="q5" value="a"> Skips to the next iteration<br>
+      <input type="radio" name="q5" value="b"> Exits the loop<br>
+      <input type="radio" name="q5" value="c"> Restarts the loop<br>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <p>6. What will be the output of <code>for i in range(3): print(i)</code>?</p>
+      <input type="radio" name="q6" value="a"> 1, 2, 3<br>
+      <input type="radio" name="q6" value="b"> 0, 1, 2<br>
+      <input type="radio" name="q6" value="c"> 0, 1, 2, 3<br>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <p>7. What does the <code>continue</code> statement do?</p>
+      <input type="radio" name="q7" value="a"> Ends the loop<br>
+      <input type="radio" name="q7" value="b"> Skips the current iteration<br>
+      <input type="radio" name="q7" value="c"> Restarts the loop<br>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <p>8. What is the correct syntax for a <code>while</code> loop?</p>
+      <input type="radio" name="q8" value="a"> while x < 5<br>
+      <input type="radio" name="q8" value="b"> while x: print("Loop")<br>
+      <input type="radio" name="q8" value="c"> Both a and b<br>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <p>9. What happens if the condition in a <code>while</code> loop is always true?</p>
+      <input type="radio" name="q9" value="a"> The loop never runs<br>
+      <input type="radio" name="q9" value="b"> The loop runs infinitely<br>
+      <input type="radio" name="q9" value="c"> The loop runs once<br>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <p>10. What is the output of <code>if True: print("Yes")</code>?</p>
+      <input type="radio" name="q10" value="a"> Yes<br>
+      <input type="radio" name="q10" value="b"> No<br>
+      <input type="radio" name="q10" value="c"> Error<br>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="question">
+      <p>11. Can a <code>for</code> loop iterate over a string?</p>
+      <input type="radio" name="q11" value="a"> Yes<br>
+      <input type="radio" name="q11" value="b"> No<br>
+      <input type="radio" name="q11" value="c"> Only with <code>range</code><br>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="question">
+      <p>12. What will <code>range(5)</code> produce?</p>
+      <input type="radio" name="q12" value="a"> [0, 1, 2, 3, 4]<br>
+      <input type="radio" name="q12" value="b"> [1, 2, 3, 4, 5]<br>
+      <input type="radio" name="q12" value="c"> [0, 1, 2, 3, 4, 5]<br>
+    </div>
+
+    <!-- More questions can follow the same structure -->
+
+    <!-- Submit Button -->
+    <div class="question">
+      <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
+    </div>
+  </form>
+
+  <div id="result" class="result"></div>
+  <div id="timestamp" class="result"></div>
+</div>
+
+<script>
+function gradeQuiz() {
+  let score = 0;
+  const answers = {
+    q1: "b", q2: "b", q3: "b", q4: "a", q5: "b", q6: "b", q7: "b", q8: "c", q9: "b", q10: "a",
+    q11: "a", q12: "a"
+  };
+
+  for (let [key, value] of Object.entries(answers)) {
+    const selected = document.querySelector(`input[name='${key}']:checked`);
+    if (selected && selected.value === value) {
+      score++;
+    }
+  }
+
+  const totalQuestions = Object.keys(answers).length;
+  const grade = (score / totalQuestions) * 100
