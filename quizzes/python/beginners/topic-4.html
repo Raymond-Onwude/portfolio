@@ -140,21 +140,24 @@
 <script>
 function gradeQuiz() {
   let score = 0;
-  let totalQuestions = 10;
+  let totalQuestions = 12; // Updated to reflect total number of questions
 
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
 
-  if (document.getElementById("q1b").checked) score++;
-  if (document.getElementById("q2b").checked) score++;
-  if (document.getElementById("q3b").checked) score++;
-  if (document.getElementById("q4b").checked) score++;
-  if (document.getElementById("q5c").checked) score++;
-  if (document.getElementById("q6a").checked) score++;
-  if (document.getElementById("q7b").checked) score++;
-  if (document.getElementById("q8b").checked) score++;
-  if (document.getElementById("q9b").checked) score++;
-  if (document.getElementById("q10b").checked) score++;
+  // Check answers based on the correct values (update values as necessary)
+  if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q3"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+  if (document.querySelector('input[name="q5"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q6"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q7"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q8"]:checked')?.value === "c") score++;
+  if (document.querySelector('input[name="q9"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q10"]:checked')?.value === "a") score++;
+  if (document.querySelector('input[name="q11"]:checked')?.value === "a") score++;
+  if (document.querySelector('input[name="q12"]:checked')?.value === "a") score++;
 
   let grade = (score / totalQuestions) * 100;
   let timestamp = new Date().toLocaleString();
@@ -169,7 +172,7 @@ function generatePDF(firstName, lastName, score, totalQuestions, grade, timestam
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text(`Variables & Data Types Quiz Results`, 20, 20);
+  doc.text(`Control Flow Results`, 20, 20);
   doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
   doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
   doc.text(`Submitted on: ${timestamp}`, 20, 50);
