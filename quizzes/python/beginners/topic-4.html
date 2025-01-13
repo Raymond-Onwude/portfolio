@@ -140,28 +140,43 @@
 <script>
 function gradeQuiz() {
   let score = 0;
-  const answers = {
-    q1: "b", q2: "b", q3: "b", q4: "a", q5: "b", q6: "b", q7: "b", q8: "c", q9: "b", q10: "a",
-    q11: "a", q12: "a"
-  };
+  let totalQuestions = 10;
 
-  for (let [key, value] of Object.entries(answers)) {
-    const selected = document.querySelector(`input[name='${key}']:checked`);
-    if (selected && selected.value === value) {
-      score++;
-    }
-  }
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
 
-  const totalQuestions = Object.keys(answers).length;
-  const grade = (score / totalQuestions) * 100;
+  if (document.getElementById("q1b").checked) score++;
+  if (document.getElementById("q2b").checked) score++;
+  if (document.getElementById("q3b").checked) score++;
+  if (document.getElementById("q4b").checked) score++;
+  if (document.getElementById("q5c").checked) score++;
+  if (document.getElementById("q6a").checked) score++;
+  if (document.getElementById("q7b").checked) score++;
+  if (document.getElementById("q8b").checked) score++;
+  if (document.getElementById("q9b").checked) score++;
+  if (document.getElementById("q10b").checked) score++;
 
-  // Display the result
-  const resultDiv = document.getElementById('result');
-  resultDiv.textContent = `Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+  let grade = (score / totalQuestions) * 100;
+  let timestamp = new Date().toLocaleString();
 
-  // Display timestamp
-  const timestampDiv = document.getElementById('timestamp');
-  const currentDate = new Date();
-  timestampDiv.textContent = `Quiz submitted on: ${currentDate.toLocaleString()}`;
+  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+  document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
+
+  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+}
+
+function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text(`Variables & Data Types Quiz Results`, 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
+  doc.text(`Submitted on: ${timestamp}`, 20, 50);
+
+  doc.save(`quiz_results_${firstName}_${lastName}.pdf`);
 }
 </script>
+
+</body>
+</html>
