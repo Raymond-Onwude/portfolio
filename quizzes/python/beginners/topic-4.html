@@ -218,9 +218,21 @@ function gradeQuiz() {
 
 function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
   const { jsPDF } = window.jspdf;
+
+  // Create a new PDF instance
   const doc = new jsPDF();
 
-  doc.text(`Control Flow Quiz Results`, 20, 20);
-  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
-  doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
-  doc.text(`Submitted on: ${timestamp}`, 20
+  // Add title
+  doc.setFontSize(22);
+  doc.text('Control Flow Quiz Report', 20, 20);
+
+  // Add student information
+  doc.setFontSize(16);
+  doc.text(`Student Name: ${firstName} ${lastName}`, 20, 40);
+  doc.text(`Score: ${score}/${totalQuestions}`, 20, 50);
+  doc.text(`Grade: ${grade}%`, 20, 60);
+  doc.text(`Timestamp: ${timestamp}`, 20, 70);
+
+  // Save the PDF
+  doc.save('quiz_results.pdf');
+}
