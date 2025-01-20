@@ -232,28 +232,30 @@ print(multiplier(3))
     if (form.q19.value === 'b') score++;
     if (form.q20.value === 'b') score++;
 
-  let grade = (score / totalQuestions) * 100;
-  let timestamp = new Date().toLocaleString();
+let grade = (score / totalQuestions) * 100;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let timestamp = new Date().toLocaleString();
 
-  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
-  document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
+    document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+    document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
 
-  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
-}
+    generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+  });
 
-function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+  function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-  // Add content to the PDF
-  doc.text('Control Flow Quiz Results', 20, 20);
-  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
-  doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
-  doc.text(`Submitted on: ${timestamp}`, 20, 50);
+    // Add content to the PDF
+    doc.text('Python Functions Quiz Results', 20, 20);
+    doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+    doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
+    doc.text(`Submitted on: ${timestamp}`, 20, 50);
 
-  // Save the generated PDF with a filename based on the student's name
-  doc.save(`${firstName}_${lastName}_quiz_results.pdf`);
-}
+    // Save PDF
+    doc.save('quiz-results.pdf');
+  }
 </script>
 
 </body>
