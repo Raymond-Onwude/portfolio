@@ -232,19 +232,28 @@ print(multiplier(3))
     if (form.q19.value === 'b') score++;
     if (form.q20.value === 'b') score++;
 
-    // Display result
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const result = document.getElementById('result');
-    result.textContent = `${firstName} ${lastName}, you scored ${score} out of 20!`;
+  let grade = (score / totalQuestions) * 100;
+  let timestamp = new Date().toLocaleString();
 
-    // Generate PDF with results
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.text(`${firstName} ${lastName} - Quiz Result`, 10, 10);
-    doc.text(`You scored ${score} out of 20.`, 10, 20);
-    doc.save('quiz-result.pdf');
-  });
+  document.getElementById("result").innerHTML = `Student: ${firstName} ${lastName}<br>Your score: ${score}/${totalQuestions} (${grade.toFixed(2)}%)`;
+  document.getElementById("timestamp").innerHTML = "Submitted on: " + timestamp;
+
+  generatePDF(firstName, lastName, score, totalQuestions, grade.toFixed(2), timestamp);
+}
+
+function generatePDF(firstName, lastName, score, totalQuestions, grade, timestamp) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // Add content to the PDF
+  doc.text('Control Flow Quiz Results', 20, 20);
+  doc.text(`Student: ${firstName} ${lastName}`, 20, 30);
+  doc.text(`Score: ${score}/${totalQuestions} (${grade}%)`, 20, 40);
+  doc.text(`Submitted on: ${timestamp}`, 20, 50);
+
+  // Save the generated PDF with a filename based on the student's name
+  doc.save(`${firstName}_${lastName}_quiz_results.pdf`);
+}
 </script>
 
 </body>
